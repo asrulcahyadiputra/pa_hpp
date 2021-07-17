@@ -98,10 +98,16 @@ $this->load->view('_partials/header');
 									</div>
 
 
-									<div class="col-8">
+									<div class="col-6">
 										<div class="form-group">
-											<label for="dp">DP (Down Payment) / Uang Muka</label>
-											<input type="text" name="dp" id="dp" class="form-control" data-type='currency' required>
+											<label for="dp">DP (Down Payment) / Uang Muka (30%)</label>
+											<input type="text" name="dp" id="dp" class="form-control dp" data-type='currency' required readonly>
+										</div>
+									</div>
+									<div class="col-6">
+										<div class="form-group">
+											<label for="total">Total</label>
+											<input type="text" name="total" id="total" class="form-control total" required readonly>
 										</div>
 									</div>
 
@@ -157,7 +163,7 @@ $this->load->view('_partials/header');
 
 <div class="invisible">
 	<table id="sample_table">
-		<tr>
+		<tr class="item">
 			<td class="text-center">
 				<span class="sn"></span>
 			</td>

@@ -165,16 +165,28 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 dataType: 'JSON',
                 success: function(data) {
 
-                    parent.find('.unit_price').val(format_number(data.sales_price))
-                    var qty = parseInt(parent.find('.qty').val())
+                    parent.find('.unit_price').val(format_number(data.sales_price));
+                    var qty = parseInt(parent.find('.qty').val());
 
-                    var jumlah = data.sales_price * qty
-                    parent.find('.jumlah').val(format_number(jumlah))
-                    // $('#jumlah-' + id).val(format_number(jumlah))
-
+                    var jumlah = data.sales_price * qty;
+                    parent.find('.jumlah').val(format_number(jumlah));
+                    sum_all();
                 }
             })
         })
+
+        function sum_all() {
+            var total = 0;
+            $('.jumlah').each(function() {
+                var jumlah = this.value;
+                var number = Number(jumlah.replace(/[^0-9,-]+/g, ""));
+                total += number;
+            });
+            console.log(total);
+            $('.total').val(format_number(total));
+            var dp = total * 0.3;
+            $('.dp').val(format_number(dp));
+        }
 
         $('#tbl_post').on('keyup', '.form-calc', function(e) {
             e.preventDefault;
