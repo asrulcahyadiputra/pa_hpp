@@ -89,7 +89,7 @@
             var id = $(this).closest('tr').find('td').eq(0).html();
             edit(id)
             $('#form-tambah').attr('form-type', 'update');
-            $('#modal-label').html('Edit Menu')
+            $('#modal-label').html('Edit Setoran Modal')
             $('#addModal').modal('show')
         })
 
@@ -265,18 +265,17 @@
         function edit(id) {
             $.ajax({
                 type: 'GET',
-                url: '<?= base_url('setting/menu/select/') ?>' + id,
+                url: '<?= base_url('transaksi/modal/select/') ?>' + id,
                 dataType: 'JSON',
                 success: function(res) {
                     console.log(res)
-                    $('#tcode').val(res.tcode)
-                    $('#menu_name').val(res.menu_name)
-                    $('#url').val(res.url)
-                    $('#menu_icon').val(res.menu_icon)
-                    $('#nu').val(res.nu)
-                    $('#head_id').val(res.head_id)
+                    $('#trans_id').val(res.trans_id)
+                    $('#trans_date').val(res.trans_date)
+                    $('#description').val(res.description)
+                    $('#trans_total').val(res.trans_total)
 
-                    $('#tcode').prop('readonly', true);
+
+                    $('#trans_id').prop('readonly', true);
                 },
                 error: function(xhr, status, error) {
                     var errorMessage = xhr.status + ': ' + xhr.statusText
@@ -295,7 +294,7 @@
         function destroy(id) {
             $.ajax({
                 type: 'DELETE',
-                url: '<?= base_url('setting/menu/delete/') ?>' + id,
+                url: '<?= base_url('transaksi/modal/delete/') ?>' + id,
                 dataType: 'JSON',
                 success: function(res) {
                     Swal.fire(

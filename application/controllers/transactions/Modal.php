@@ -96,7 +96,7 @@ class Modal extends CI_Controller
 
     public function select($id)
     {
-        $req = $this->model->select($id);
+        $req = $this->model->all($id);
 
         echo json_encode($req);
     }

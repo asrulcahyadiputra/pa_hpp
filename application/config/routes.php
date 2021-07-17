@@ -218,4 +218,7 @@ $route['setting/user/delete/(:any)']                    = 'setting/Users/destroy
 */
 $route['transaksi/modal']                                  = 'transactions/Modal';
 $route['transaksi/modal/get_data']                         = 'transactions/Modal/all';
+$route['transaksi/modal/select/(:any)']                    = 'transactions/modal/select/$1';
+$route['transaksi/modal/delete/(:any)']                    = 'transactions/modal/destroy/$1';
 $route['transaksi/modal/store']                            = 'transactions/Modal/store';
+$route['transaksi/modal/update']                           = 'transactions/Modal/update';
