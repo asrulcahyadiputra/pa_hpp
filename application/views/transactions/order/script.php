@@ -170,6 +170,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
                     var jumlah = data.sales_price * qty;
                     parent.find('.jumlah').val('Rp ' + format_number(jumlah));
+                    parent.find('.unit').val(data.product_unit);
                     sum_all();
                 }
             })

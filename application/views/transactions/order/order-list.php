@@ -98,18 +98,7 @@ $this->load->view('_partials/header');
 									</div>
 
 
-									<div class="col-6">
-										<div class="form-group">
-											<label for="dp">DP (Down Payment) / Uang Muka (30%)</label>
-											<input type="text" name="dp" id="dp" class="form-control dp" data-type='currency' required readonly>
-										</div>
-									</div>
-									<div class="col-6">
-										<div class="form-group">
-											<label for="total">Total</label>
-											<input type="text" name="total" id="total" class="form-control total" required readonly>
-										</div>
-									</div>
+
 
 
 									<div class="col-8">
@@ -143,6 +132,22 @@ $this->load->view('_partials/header');
 							</div>
 
 							<div class="card-footer">
+								<div class="row">
+									<div class="col-6">
+										<div class="form-group">
+											<label for="total">Total</label>
+											<input type="text" name="total" id="total" class="form-control total" required readonly>
+										</div>
+									</div>
+									<div class="col-6">
+										<div class="form-group">
+											<label for="dp">DP (Down Payment) / Uang Muka (30%)</label>
+											<input type="text" name="dp" id="dp" class="form-control dp" data-type='currency' required readonly>
+										</div>
+									</div>
+								</div>
+
+
 								<div class="text-right">
 									<button type="button" class="btn btn-secondary" id="btn-cancel">Batal</button>
 									<button type="submit" class="btn btn-primary" id="btn-submit">Simpan</button>
@@ -183,6 +188,9 @@ $this->load->view('_partials/header');
 			</td>
 			<td>
 				<input type="number" name="qty[]" class="form-control form-calc qty" min="1" id="qty-" value="1" required>
+			</td>
+			<td>
+				<input type="text" name="unit[]" class="form-control form-calc unit" readonly required>
 			</td>
 			<td>
 				<input type="text" name="jumlah[]" id="jumlah-" class="form-control form-line jumlah" readonly required>
