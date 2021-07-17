@@ -116,6 +116,7 @@ $this->load->view('_partials/header');
 														<th>Ukuran</th>
 														<th>Harga @</th>
 														<th>Qty</th>
+														<th>Satuan</th>
 														<th>Jumlah</th>
 														<th class="no-content"></th>
 													</tr>
