@@ -82,7 +82,7 @@ $this->load->view('_partials/header');
 									<div class="col-4">
 										<div class="form-group">
 											<label for="tanggal">Tanggal</label>
-											<input type="date" name="tanggal" id="tanggal" class="form-control" required>
+											<input type="date" name="tanggal" id="tanggal" class="form-control" required min="<?= date('Y-m') . '-01' ?>" max="<?= date('Y-m-d') ?>" value="<?= date('Y-m-d') ?>">
 										</div>
 									</div>
 									<div class="col-4">

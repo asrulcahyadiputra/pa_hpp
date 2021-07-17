@@ -165,11 +165,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 dataType: 'JSON',
                 success: function(data) {
 
-                    parent.find('.unit_price').val(format_number(data.sales_price));
+                    parent.find('.unit_price').val('Rp ' + format_number(data.sales_price));
                     var qty = parseInt(parent.find('.qty').val());
 
                     var jumlah = data.sales_price * qty;
-                    parent.find('.jumlah').val(format_number(jumlah));
+                    parent.find('.jumlah').val('Rp ' + format_number(jumlah));
                     sum_all();
                 }
             })
@@ -183,9 +183,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 total += number;
             });
             console.log(total);
-            $('.total').val(format_number(total));
+            $('.total').val('Rp ' + format_number(total));
             var dp = total * 0.3;
-            $('.dp').val(format_number(dp));
+            $('.dp').val('Rp ' + format_number(dp));
         }
 
         $('#tbl_post').on('keyup', '.form-calc', function(e) {
