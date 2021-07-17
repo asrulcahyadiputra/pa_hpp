@@ -210,3 +210,12 @@ $route['setting/user/store']                            = 'setting/Users/store';
 $route['setting/user/update']                           = 'setting/Users/update';
 $route['setting/user/select/(:any)']                    = 'setting/Users/select/$1';
 $route['setting/user/delete/(:any)']                    = 'setting/Users/destroy/$1';
+
+/*
+| -------------------------------------------------------------------------
+| Setor modal awal
+| -------------------------------------------------------------------------
+*/
+$route['transaksi/modal']                                  = 'transactions/Modal';
+$route['transaksi/modal/get_data']                         = 'transactions/Modal/all';
+$route['transaksi/modal/store']                            = 'transactions/Modal/store';
