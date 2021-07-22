@@ -60,6 +60,7 @@ class M_modal extends CI_Model
         $gl = [
             [
                 'account_no'            => '1-10001',
+                'gl_date'               => $trans_date,
                 'periode'               => $periode,
                 'trans_id'              => $trans_id,
                 'nominal'               => $trans_total,
@@ -67,6 +68,7 @@ class M_modal extends CI_Model
             ],
             [
                 'account_no'            => '3-10001',
+                'gl_date'               => $trans_date,
                 'periode'               => $periode,
                 'trans_id'              => $trans_id,
                 'nominal'               => $trans_total,

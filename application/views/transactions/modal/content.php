@@ -29,7 +29,7 @@ $this->load->view('_partials/header');
                                         <th style="width: 10%;">Tanggal</th>
                                         <th style="width: 20%;">Keterangan</th>
                                         <th style="width: 15%;">Total</th>
-                                        <th class='text-center' style="width: 10%;">Aksi</th>
+                                        <!-- <th class='text-center' style="width: 10%;">Aksi</th> -->
                                     </tr>
                                 </thead>
                             </table>

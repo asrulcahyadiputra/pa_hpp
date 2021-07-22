@@ -12,14 +12,14 @@
                     "targets": 0,
                     "className": 'text-center'
                 },
-                {
-                    "searchable": false,
-                    "orderable": false,
-                    "targets": 4,
-                    "data": null,
-                    'className': 'text-center',
-                    'defaultContent': action_html,
-                },
+                // {
+                //     "searchable": false,
+                //     "orderable": false,
+                //     "targets": 4,
+                //     "data": null,
+                //     'className': 'text-center',
+                //     'defaultContent': action_html,
+                // },
                 {
                     'targets': 3,
                     'data': 'trans_total',
