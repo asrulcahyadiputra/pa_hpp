@@ -98,7 +98,7 @@ $this->load->view('_partials/header');
 											</thead>
 											<tbody>
 												<tr>
-													<td><?= '01-' . $month . '-' . $year . ' 00:00:00' ?></td>
+													<td><?= '01-' . $month . '-' . $year  ?></td>
 													<td><?= 'Saldo Awal ' . $akun ?></td>
 													<td colspan="3" class=" table-active "></td>
 
@@ -106,23 +106,40 @@ $this->load->view('_partials/header');
 														<span class="text-left">Rp</span>
 														<span style="float:right;">
 															<?php if ($first['saldo_normal'] == 'd') {
-																$saldo_awal = $first['opening_debet'] - $first['opening_kredit'];
+																$saldo_awal_debet = $first['opening_debet'] - $first['opening_kredit'];
 															} else {
-																$saldo_awal = 0;
+																$saldo_awal_debet = 0;
 															} ?>
 
-															<?= nominal1($saldo_awal) ?>
+															<?php
+															if ($saldo_awal_debet > 0) {
+																echo nominal1($saldo_awal_debet);
+															} else {
+																echo nominal1(0);
+															}
+
+															?>
 														</span>
 													</td>
 													<td>
 														<span class="text-left">Rp</span>
 														<span style="float:right;">
 															<?php if ($first['saldo_normal'] == 'k') {
-																$saldo_awal = $first['opening_kredit'] - $first['opening_debet'];
+																$saldo_awal_kredit = $first['opening_kredit'] - $first['opening_debet'];
 															} else {
-																$saldo_awal = 0;
+																$saldo_awal_kredit = 0;
 															} ?>
-															<?= nominal1($saldo_awal) ?>
+															<?php
+
+															if ($saldo_awal_kredit > 0) {
+																echo nominal1($saldo_awal_kredit);
+															} elseif ($saldo_awal_debet < 0) {
+																echo nominal1($saldo_awal_debet * -1);
+															} else {
+																echo nominal1(0);
+															}
+
+															?>
 
 														</span>
 													</td>
@@ -156,26 +173,45 @@ $this->load->view('_partials/header');
 															$kredit = $kredit + ($b['kredit'] - $b['debet']);
 														}
 														?>
+														<!-- saldo debet -->
+														<?php if ($b['normal_balance'] == 'd') {
+															$saldo_awal = $first['opening_debet'] - $first['opening_kredit'];
+															$saldo_debet = ($saldo_awal + $debet);
+														} else {
+															$saldo_debet = 0;
+														} ?>
+														<!-- saldo kredit -->
+														<?php if ($b['normal_balance'] == 'k') {
+															$saldo_awal = $first['opening_debet'] - $first['opening_kredit'];
+															$saldo_kredit = ($saldo_awal + $kredit);
+														} else {
+															$saldo_kredit = 0;
+														} ?>
 														<td>
 															<span class="text-left">Rp</span>
 															<span style="float:right;">
-																<?php if ($b['normal_balance'] == 'd') {
-																	$saldo_awal = $first['opening_debet'] - $first['opening_kredit'];
-																	echo nominal1($saldo_awal + $debet);
+																<?php
+																if ($saldo_debet > 0) {
+																	echo nominal1($saldo_debet);
 																} else {
 																	echo nominal1(0);
-																} ?>
+																}
+																?>
 															</span>
 														</td>
+
 														<td>
 															<span class="text-left">Rp</span>
 															<span style="float:right;">
-																<?php if ($b['normal_balance'] == 'k') {
-																	$saldo_awal = $first['kredit'] - $first['debet'];
-																	echo nominal1($saldo_awal + $kredit);
+																<?php
+																if ($saldo_kredit > 0) {
+																	echo nominal1($saldo_kredit);
+																} elseif ($saldo_debet < 0) {
+																	echo nominal1($saldo_debet * -1);
 																} else {
 																	echo nominal1(0);
-																} ?>
+																}
+																?>
 															</span>
 														</td>
 													</tr>
