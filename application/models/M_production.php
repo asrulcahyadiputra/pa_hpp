@@ -227,27 +227,8 @@ class M_production extends CI_Model
 		$order 				= $this->db->get_where('transactions', ['trans_id' => $kode_pesanan])->row_array(); //data pesanan
 		$payment 			= $this->db->get_where('payments', ['trans_id' => $kode_pesanan])->row_array(); //Pendapatan diterima dimuka
 		$gl = [
-			// [
-			// 	'account_no'	     => '2-10001',
-			// 	'periode'				=> $periode,
-			// 	'trans_id'			=> $trans_id,
-			// 	'nominal'			=> $payment['nominal'],
-			// 	'gl_balance'		=> 'd'
-			// ],
-			// [
-			// 	'account_no'	    => '1-10002',
-			// 	'periode'			=> $periode,
-			// 	'trans_id'			=> $trans_id,
-			// 	'nominal'			=> $order['trans_total'] - $payment['nominal'],
-			// 	'gl_balance'		=> 'd'
-			// ],
-			// [
-			// 	'account_no'	     => '4-10001',
-			// 	'periode'			=> $periode,
-			// 	'trans_id'			=> $trans_id,
-			// 	'nominal'			=> $order['trans_total'],
-			// 	'gl_balance'		=> 'k'
-			// ],
+
+			// BEGIN : BBB
 			[
 				'account_no'	     => '5-20001',
 				'periode'			=> $periode,
@@ -262,22 +243,29 @@ class M_production extends CI_Model
 				'nominal'			=> $total_bb,
 				'gl_balance'		=> 'k'
 			],
+			// END BBB
+
+			// BEGIN BTKL
+
 			[
-				'account_no'	     => '5-20004',
+				'account_no'		=> '5-20002',
 				'periode'			=> $periode,
 				'trans_id'			=> $trans_id,
-				'nominal'			=> $total_bp,
+				'nominal'			=> $total_btkl,
 				'gl_balance'		=> 'd'
 			],
 			[
-				'account_no'	     => '1-10004',
+				'account_no'		=> '2-10003',
 				'periode'			=> $periode,
 				'trans_id'			=> $trans_id,
-				'nominal'			=> $total_bp,
+				'nominal'			=> $total_btkl,
 				'gl_balance'		=> 'k'
 			],
+			// END: BTKL
+
+			// BEGIN: BOP
 			[
-				'account_no'	     => '5-20003',
+				'account_no'	    => '5-20003',
 				'periode'			=> $periode,
 				'trans_id'			=> $trans_id,
 				'nominal'			=> $bop_final,
@@ -290,6 +278,11 @@ class M_production extends CI_Model
 				'nominal'			=> $bop_final,
 				'gl_balance'		=> 'k'
 			],
+			// END: BOP
+
+
+
+			// BEGIN : Produk Jadi
 			[
 				'account_no'	     => '1-10005',
 				'periode'			=> $periode,

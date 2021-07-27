@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jul 06, 2021 at 12:18 PM
+-- Generation Time: Jul 27, 2021 at 04:15 PM
 -- Server version: 5.7.32
 -- PHP Version: 7.4.12
 
@@ -33,33 +33,8 @@ CREATE TABLE `bill_of_materials` (
 --
 
 INSERT INTO `bill_of_materials` (`bom_id`, `trans_id`, `material_id`, `qty`, `unit`) VALUES
-(1, 'TRX-BOM-000000001', 'MTR-0001', 0.5, NULL),
-(2, 'TRX-BOM-000000001', 'MTR-0008', 1, NULL),
-(3, 'TRX-BOM-000000001', 'MTR-0005', 0.5, NULL),
-(4, 'TRX-BOM-000000002', 'MTR-0001', 1, NULL),
-(5, 'TRX-BOM-000000002', 'MTR-0008', 1, NULL),
-(6, 'TRX-BOM-000000002', 'MTR-0005', 1, NULL),
-(7, 'TRX-BOM-000000003', 'MTR-0001', 0.75, NULL),
-(8, 'TRX-BOM-000000003', 'MTR-0008', 1, NULL),
-(9, 'TRX-BOM-000000003', 'MTR-0005', 0.75, NULL),
-(10, 'TRX-BOM-000000004', 'MTR-0001', 0.6, NULL),
-(11, 'TRX-BOM-000000004', 'MTR-0008', 1, NULL),
-(12, 'TRX-BOM-000000004', 'MTR-0005', 0.6, NULL),
-(13, 'TRX-BOM-000000005', 'MTR-0004', 1, NULL),
-(14, 'TRX-BOM-000000005', 'MTR-0008', 1, NULL),
-(15, 'TRX-BOM-000000005', 'MTR-0005', 1, NULL),
-(16, 'TRX-BOM-000000006', 'MTR-0004', 1.5, NULL),
-(17, 'TRX-BOM-000000006', 'MTR-0005', 1.5, NULL),
-(18, 'TRX-BOM-000000006', 'MTR-0008', 1, NULL),
-(19, 'TRX-BOM-000000007', 'MTR-0004', 1.75, NULL),
-(20, 'TRX-BOM-000000007', 'MTR-0005', 2, NULL),
-(21, 'TRX-BOM-000000007', 'MTR-0008', 1, NULL),
-(22, 'TRX-BOM-000000008', 'MTR-0001', 2, NULL),
-(23, 'TRX-BOM-000000008', 'MTR-0005', 3, NULL),
-(24, 'TRX-BOM-000000008', 'MTR-0008', 3, NULL),
-(25, 'TRX-BOM-000000009', 'MTR-0001', 3, NULL),
-(26, 'TRX-BOM-000000009', 'MTR-0005', 4, NULL),
-(27, 'TRX-BOM-000000009', 'MTR-0008', 3, NULL);
+(28, 'TRX-BOM-000000001', 'MTR-0004', 0.5, NULL),
+(29, 'TRX-BOM-000000001', 'MTR-0005', 2, NULL);
 
 -- --------------------------------------------------------
 
@@ -71,33 +46,35 @@ CREATE TABLE `chart_of_accounts` (
   `account_no` varchar(20) NOT NULL,
   `account_name` varchar(100) NOT NULL,
   `normal_balance` varchar(1) NOT NULL,
-  `sub_code` char(3) NOT NULL
+  `sub_code` char(3) NOT NULL,
+  `status` int(11) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `chart_of_accounts`
 --
 
-INSERT INTO `chart_of_accounts` (`account_no`, `account_name`, `normal_balance`, `sub_code`) VALUES
-('1-10001', 'Kas', 'd', '1-1'),
-('1-10002', 'Piutang Penjualan', 'd', '1-1'),
-('1-10003', 'Persediaan Bahan Baku', 'd', '1-1'),
-('1-10004', 'Persedian Bahan Penolong', 'd', '1-1'),
-('1-10005', 'Persediaan Produk Jadi', 'd', '1-1'),
-('1-20001', 'Mesin Jahit', 'd', '1-2'),
-('1-20002', 'Mesin Bordir', 'd', '1-2'),
-('1-30001', 'Akta Notaris', 'd', '1-3'),
-('2-10001', 'Pendapatan diterima dimuka', 'k', '2-1'),
-('2-10002', 'Utang Usaha', 'k', '2-1'),
-('2-20001', 'Utang Kredit Bank', 'k', '2-2'),
-('3-10001', 'Modal Pemilik', 'k', '3-1'),
-('4-10001', 'Penjualan', 'k', '4-1'),
-('5-10001', 'Beban Administrasi dan Umum', 'd', '5-1'),
-('5-20001', 'BDP-BBB', 'd', '5-2'),
-('5-20002', 'BDP-BTKL', 'd', '5-2'),
-('5-20003', 'BDP-BOP', 'd', '5-2'),
-('5-20004', 'BDP-BBP', 'd', '5-2'),
-('5-20005', 'BOP yang dibebankan', 'd', '5-2');
+INSERT INTO `chart_of_accounts` (`account_no`, `account_name`, `normal_balance`, `sub_code`, `status`) VALUES
+('1-10001', 'Kas', 'd', '1-1', 1),
+('1-10002', 'Piutang Penjualan', 'd', '1-1', 1),
+('1-10003', 'Persediaan Bahan Baku', 'd', '1-1', 1),
+('1-10004', 'Persedian Bahan Penolong', 'd', '1-1', 1),
+('1-10005', 'Persediaan Produk Jadi', 'd', '1-1', 1),
+('1-20001', 'Mesin Jahit', 'd', '1-2', 1),
+('1-20002', 'Mesin Bordir', 'd', '1-2', 1),
+('1-30001', 'Akta Notaris', 'd', '1-3', 1),
+('2-10001', 'Pendapatan diterima dimuka', 'k', '2-1', 1),
+('2-10002', 'Utang Usaha', 'k', '2-1', 1),
+('2-10003', 'Utang Gaji dan Upah', 'k', '2-1', 1),
+('2-20001', 'Utang Kredit Bank', 'k', '2-2', 1),
+('3-10001', 'Modal Pemilik', 'k', '3-1', 1),
+('4-10001', 'Penjualan', 'k', '4-1', 1),
+('5-10001', 'Beban Administrasi dan Umum', 'd', '5-1', 1),
+('5-20001', 'BDP-BBB', 'd', '5-2', 1),
+('5-20002', 'BDP-BTKL', 'd', '5-2', 1),
+('5-20003', 'BDP-BOP', 'd', '5-2', 1),
+('5-20004', 'BDP-BBP', 'd', '5-2', 0),
+('5-20005', 'BOP yang dibebankan', 'd', '5-2', 1);
 
 -- --------------------------------------------------------
 
@@ -194,15 +171,8 @@ CREATE TABLE `direct_labor_costs` (
 --
 
 INSERT INTO `direct_labor_costs` (`direct_labor_id`, `trans_id`, `employee_id`, `cost`) VALUES
-(14, 'TRX-PRD-000000001', 'KAR-0001', 5000000),
-(15, 'TRX-PRD-000000001', 'KAR-0002', 6500000),
-(16, 'TRX-PRD-000000001', 'KAR-0004', 5000000),
-(17, 'TRX-PRD-000000002', 'KAR-0001', 200000),
-(18, 'TRX-PRD-000000002', 'KAR-0002', 250000),
-(19, 'TRX-PRD-000000003', 'KAR-0001', 150000),
-(20, 'TRX-PRD-000000003', 'KAR-0002', 250000),
-(21, 'TRX-PRD-000000004', 'KAR-0001', 1000000),
-(22, 'TRX-PRD-000000004', 'KAR-0002', 5000000);
+(30, 'TRX-PRD-000000001', 'KAR-0001', 100000),
+(31, 'TRX-PRD-000000001', 'KAR-0002', 250000);
 
 -- --------------------------------------------------------
 
@@ -224,21 +194,8 @@ CREATE TABLE `direct_material_cost` (
 --
 
 INSERT INTO `direct_material_cost` (`id`, `material_id`, `qty`, `trans_id`, `type`, `unit_price`) VALUES
-(32, 'MTR-0001', 500, 'TRX-PRD-000000001', 'BBB', 15000),
-(33, 'MTR-0008', 1000, 'TRX-PRD-000000001', 'BBP', 375),
-(34, 'MTR-0005', 500, 'TRX-PRD-000000001', 'BBB', 4000),
-(35, 'MTR-0004', 500, 'TRX-PRD-000000001', 'BBB', 12500),
-(36, 'MTR-0008', 500, 'TRX-PRD-000000001', 'BBP', 375),
-(37, 'MTR-0005', 500, 'TRX-PRD-000000001', 'BBB', 4000),
-(38, 'MTR-0001', 10, 'TRX-PRD-000000002', 'BBB', 15000),
-(39, 'MTR-0008', 20, 'TRX-PRD-000000002', 'BBP', 375),
-(40, 'MTR-0005', 10, 'TRX-PRD-000000002', 'BBB', 4000),
-(41, 'MTR-0001', 30, 'TRX-PRD-000000003', 'BBB', 15000),
-(42, 'MTR-0005', 40, 'TRX-PRD-000000003', 'BBB', 4000),
-(43, 'MTR-0008', 30, 'TRX-PRD-000000003', 'BBP', 375),
-(44, 'MTR-0001', 500, 'TRX-PRD-000000004', 'BBB', 15000),
-(45, 'MTR-0008', 1000, 'TRX-PRD-000000004', 'BBP', 375),
-(46, 'MTR-0005', 500, 'TRX-PRD-000000004', 'BBB', 4000);
+(57, 'MTR-0004', 25, 'TRX-PRD-000000001', 'BBB', 15000),
+(58, 'MTR-0005', 100, 'TRX-PRD-000000001', 'BBB', 5000);
 
 -- --------------------------------------------------------
 
@@ -288,71 +245,23 @@ CREATE TABLE `general_ledger` (
 --
 
 INSERT INTO `general_ledger` (`gl_id`, `account_no`, `periode`, `gl_date`, `trans_id`, `nominal`, `gl_balance`) VALUES
-(47, '1-10003', 202107, '2021-07-02 06:21:26', 'TRX-PMB-000000001', 17750000, 'd'),
-(48, '1-10004', 202107, '2021-07-02 06:21:26', 'TRX-PMB-000000001', 3000000, 'd'),
-(49, '1-10001', 202107, '2021-07-02 06:21:26', 'TRX-PMB-000000001', 20750000, 'k'),
-(50, '1-10003', 202107, '2021-07-02 07:49:08', 'TRX-PMB-000000002', 2750000, 'd'),
-(51, '1-10004', 202107, '2021-07-02 07:49:08', 'TRX-PMB-000000002', 500000, 'd'),
-(52, '1-10001', 202107, '2021-07-02 07:49:08', 'TRX-PMB-000000002', 3250000, 'k'),
-(70, '1-10001', 202107, '2021-07-02 15:32:05', 'TRX-PSN-000000001', 45000000, 'd'),
-(71, '2-10001', 202107, '2021-07-02 15:32:05', 'TRX-PSN-000000001', 45000000, 'k'),
-(72, '2-10001', 202107, '2021-07-02 15:33:39', 'TRX-PRD-000000001', 45000000, 'd'),
-(73, '1-10002', 202107, '2021-07-02 15:33:39', 'TRX-PRD-000000001', 40000000, 'd'),
-(74, '4-10001', 202107, '2021-07-02 15:33:39', 'TRX-PRD-000000001', 85000000, 'k'),
-(75, '5-20001', 202107, '2021-07-02 15:33:39', 'TRX-PRD-000000001', 17750000, 'd'),
-(76, '1-10003', 202107, '2021-07-02 15:33:39', 'TRX-PRD-000000001', 17750000, 'k'),
-(77, '5-20004', 202107, '2021-07-02 15:33:39', 'TRX-PRD-000000001', 562500, 'd'),
-(78, '1-10004', 202107, '2021-07-02 15:33:39', 'TRX-PRD-000000001', 562500, 'k'),
-(79, '5-20003', 202107, '2021-07-02 15:33:39', 'TRX-PRD-000000001', 12062500, 'd'),
-(80, '5-20005', 202107, '2021-07-02 15:33:39', 'TRX-PRD-000000001', 12062500, 'k'),
-(81, '1-10005', 202107, '2021-07-02 15:33:39', 'TRX-PRD-000000001', 46312500, 'd'),
-(82, '5-20001', 202107, '2021-07-02 15:33:39', 'TRX-PRD-000000001', 17750000, 'k'),
-(83, '5-20002', 202107, '2021-07-02 15:33:39', 'TRX-PRD-000000001', 16500000, 'k'),
-(84, '5-20003', 202107, '2021-07-02 15:33:39', 'TRX-PRD-000000001', 12062500, 'k'),
-(85, '1-10001', 202107, '2021-07-02 16:13:59', 'TRX-PSN-000000002', 500000, 'd'),
-(86, '2-10001', 202107, '2021-07-02 16:13:59', 'TRX-PSN-000000002', 500000, 'k'),
-(87, '2-10001', 202107, '2021-07-02 16:14:51', 'TRX-PRD-000000002', 500000, 'd'),
-(88, '1-10002', 202107, '2021-07-02 16:14:51', 'TRX-PRD-000000002', 600000, 'd'),
-(89, '4-10001', 202107, '2021-07-02 16:14:51', 'TRX-PRD-000000002', 1100000, 'k'),
-(90, '5-20001', 202107, '2021-07-02 16:14:51', 'TRX-PRD-000000002', 190000, 'd'),
-(91, '1-10003', 202107, '2021-07-02 16:14:51', 'TRX-PRD-000000002', 190000, 'k'),
-(92, '5-20004', 202107, '2021-07-02 16:14:51', 'TRX-PRD-000000002', 7500, 'd'),
-(93, '1-10004', 202107, '2021-07-02 16:14:51', 'TRX-PRD-000000002', 7500, 'k'),
-(94, '5-20003', 202107, '2021-07-02 16:14:51', 'TRX-PRD-000000002', 14500, 'd'),
-(95, '5-20005', 202107, '2021-07-02 16:14:51', 'TRX-PRD-000000002', 14500, 'k'),
-(96, '1-10005', 202107, '2021-07-02 16:14:51', 'TRX-PRD-000000002', 654500, 'd'),
-(97, '5-20001', 202107, '2021-07-02 16:14:51', 'TRX-PRD-000000002', 190000, 'k'),
-(98, '5-20002', 202107, '2021-07-02 16:14:51', 'TRX-PRD-000000002', 450000, 'k'),
-(99, '5-20003', 202107, '2021-07-02 16:14:51', 'TRX-PRD-000000002', 14500, 'k'),
-(100, '1-10001', 202107, '2021-07-02 16:19:22', 'TRX-PSN-000000003', 250000, 'd'),
-(101, '2-10001', 202107, '2021-07-02 16:19:22', 'TRX-PSN-000000003', 250000, 'k'),
-(102, '2-10001', 202107, '2021-07-02 16:20:04', 'TRX-PRD-000000003', 250000, 'd'),
-(103, '1-10002', 202107, '2021-07-02 16:20:04', 'TRX-PRD-000000003', 950000, 'd'),
-(104, '4-10001', 202107, '2021-07-02 16:20:04', 'TRX-PRD-000000003', 1200000, 'k'),
-(105, '5-20001', 202107, '2021-07-02 16:20:04', 'TRX-PRD-000000003', 610000, 'd'),
-(106, '1-10003', 202107, '2021-07-02 16:20:04', 'TRX-PRD-000000003', 610000, 'k'),
-(107, '5-20004', 202107, '2021-07-02 16:20:04', 'TRX-PRD-000000003', 11250, 'd'),
-(108, '1-10004', 202107, '2021-07-02 16:20:04', 'TRX-PRD-000000003', 11250, 'k'),
-(109, '5-20003', 202107, '2021-07-02 16:20:04', 'TRX-PRD-000000003', 18250, 'd'),
-(110, '5-20005', 202107, '2021-07-02 16:20:04', 'TRX-PRD-000000003', 18250, 'k'),
-(111, '1-10005', 202107, '2021-07-02 16:20:04', 'TRX-PRD-000000003', 1028250, 'd'),
-(112, '5-20001', 202107, '2021-07-02 16:20:04', 'TRX-PRD-000000003', 610000, 'k'),
-(113, '5-20002', 202107, '2021-07-02 16:20:04', 'TRX-PRD-000000003', 400000, 'k'),
-(114, '5-20003', 202107, '2021-07-02 16:20:04', 'TRX-PRD-000000003', 18250, 'k'),
-(118, '5-20001', 202107, '2021-07-03 14:02:17', 'TRX-PRD-000000004', 9500000, 'd'),
-(119, '1-10003', 202107, '2021-07-03 14:02:17', 'TRX-PRD-000000004', 9500000, 'k'),
-(120, '5-20004', 202107, '2021-07-03 14:02:17', 'TRX-PRD-000000004', 375000, 'd'),
-(121, '1-10004', 202107, '2021-07-03 14:02:17', 'TRX-PRD-000000004', 375000, 'k'),
-(122, '5-20003', 202107, '2021-07-03 14:02:17', 'TRX-PRD-000000004', 1375000, 'd'),
-(123, '5-20005', 202107, '2021-07-03 14:02:17', 'TRX-PRD-000000004', 1375000, 'k'),
-(124, '1-10005', 202107, '2021-07-03 14:02:17', 'TRX-PRD-000000004', 16875000, 'd'),
-(125, '5-20001', 202107, '2021-07-03 14:02:17', 'TRX-PRD-000000004', 9500000, 'k'),
-(126, '5-20002', 202107, '2021-07-03 14:02:17', 'TRX-PRD-000000004', 6000000, 'k'),
-(127, '5-20003', 202107, '2021-07-03 14:02:17', 'TRX-PRD-000000004', 1375000, 'k'),
-(130, '1-10001', 202107, '2021-07-06 11:59:15', 'TRX-PYM-000000001', 600000, 'd'),
-(131, '1-10002', 202107, '2021-07-06 11:59:15', 'TRX-PYM-000000001', 600000, 'k'),
-(132, '1-10001', 202107, '2021-07-06 12:01:38', 'TRX-PYM-000000002', 950000, 'd'),
-(133, '1-10002', 202107, '2021-07-06 12:01:38', 'TRX-PYM-000000002', 950000, 'k');
+(181, '1-10001', 202107, '2021-06-30 17:00:00', 'TRX-STM-000000001', 500000000, 'd'),
+(182, '3-10001', 202107, '2021-06-30 17:00:00', 'TRX-STM-000000001', 500000000, 'k'),
+(183, '1-10003', 0, '2021-07-27 15:38:30', 'TRX-PMB-000000001', 5900000, 'd'),
+(184, '1-10001', 0, '2021-07-27 15:38:30', 'TRX-PMB-000000001', 5900000, 'k'),
+(185, '1-10001', 202107, '2021-07-27 15:42:50', 'TRX-PSN-000000001', 825000, 'd'),
+(186, '1-10002', 202107, '2021-07-27 15:42:50', 'TRX-PSN-000000001', 1925000, 'd'),
+(187, '4-10001', 202107, '2021-07-27 15:42:50', 'TRX-PSN-000000001', 2750000, 'k'),
+(208, '5-20001', 202107, '2021-07-27 16:04:48', 'TRX-PRD-000000001', 875000, 'd'),
+(209, '1-10003', 202107, '2021-07-27 16:04:48', 'TRX-PRD-000000001', 875000, 'k'),
+(210, '5-20002', 202107, '2021-07-27 16:04:48', 'TRX-PRD-000000001', 350000, 'd'),
+(211, '2-10003', 202107, '2021-07-27 16:04:48', 'TRX-PRD-000000001', 350000, 'k'),
+(212, '5-20003', 202107, '2021-07-27 16:04:48', 'TRX-PRD-000000001', 100000, 'd'),
+(213, '5-20005', 202107, '2021-07-27 16:04:48', 'TRX-PRD-000000001', 100000, 'k'),
+(214, '1-10005', 202107, '2021-07-27 16:04:48', 'TRX-PRD-000000001', 1325000, 'd'),
+(215, '5-20001', 202107, '2021-07-27 16:04:48', 'TRX-PRD-000000001', 875000, 'k'),
+(216, '5-20002', 202107, '2021-07-27 16:04:48', 'TRX-PRD-000000001', 350000, 'k'),
+(217, '5-20003', 202107, '2021-07-27 16:04:48', 'TRX-PRD-000000001', 100000, 'k');
 
 -- --------------------------------------------------------
 
@@ -452,7 +361,8 @@ INSERT INTO `menu_item` (`tcode`, `nu`, `menu_name`, `menu_icon`, `url`, `head_i
 ('TR01', 1, 'Bill of Materials', '-', 'transaksi/bom', 'T01'),
 ('TR02', 2, 'Pesanan', '-', 'transaksi/pesanan', 'T01'),
 ('TR03', 3, 'Pembelian', '-', 'transaksi/pembelian', 'T01'),
-('TR04', 4, 'Produksi', '-', 'transaksi/produksi', 'T01');
+('TR04', 4, 'Produksi', '-', 'transaksi/produksi', 'T01'),
+('TR05', 5, 'Setoran Modal', '-', 'transaksi/modal', 'T01');
 
 -- --------------------------------------------------------
 
@@ -475,10 +385,7 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `trans_id`, `product_id`, `order_size`, `order_qty`, `order_price`, `order_total`) VALUES
-(30, 'TRX-PSN-000000001', 'PRD-0001', 'M', '1000', 55000, 55000000),
-(31, 'TRX-PSN-000000001', 'PRD-0002', 'M', '500', 60000, 30000000),
-(32, 'TRX-PSN-000000002', 'PRD-0001', 'M', '20', 55000, 1100000),
-(33, 'TRX-PSN-000000003', 'PRD-0003', 'L', '10', 120000, 1200000);
+(38, 'TRX-PSN-000000001', 'PRD-0001', 'All Size', '50', 55000, 2750000);
 
 -- --------------------------------------------------------
 
@@ -519,13 +426,8 @@ CREATE TABLE `overhead_cost` (
 --
 
 INSERT INTO `overhead_cost` (`id`, `trans_id`, `oc_id`, `overhead_cost`) VALUES
-(18, 'TRX-PRD-000000001', 'OV01', 5000000),
-(19, 'TRX-PRD-000000001', 'OV02', 3000000),
-(20, 'TRX-PRD-000000001', 'OV03', 2500000),
-(21, 'TRX-PRD-000000001', 'OV04', 1000000),
-(22, 'TRX-PRD-000000002', 'OV03', 7000),
-(23, 'TRX-PRD-000000003', 'OV03', 7000),
-(24, 'TRX-PRD-000000004', 'OV01', 1000000);
+(31, 'TRX-PRD-000000001', 'OV02', 50000),
+(32, 'TRX-PRD-000000001', 'OV03', 50000);
 
 -- --------------------------------------------------------
 
@@ -546,11 +448,7 @@ CREATE TABLE `payments` (
 --
 
 INSERT INTO `payments` (`payment_id`, `trans_id`, `periode`, `nominal`, `description`) VALUES
-(15, 'TRX-PSN-000000001', 202107, 45000000, 'Down Payment (DP)'),
-(16, 'TRX-PSN-000000002', 202107, 500000, 'Down Payment (DP)'),
-(17, 'TRX-PSN-000000003', 202107, 250000, 'Down Payment (DP)'),
-(21, 'TRX-PSN-000000002', 202107, 600000, 'Pelunasan'),
-(22, 'TRX-PSN-000000003', 202107, 950000, 'Pelunasan');
+(27, 'TRX-PSN-000000001', 202107, 825000, 'Down Payment (DP)');
 
 -- --------------------------------------------------------
 
@@ -571,10 +469,7 @@ CREATE TABLE `production_costs` (
 --
 
 INSERT INTO `production_costs` (`cost_id`, `trans_id`, `material_cost`, `direct_labor_cost`, `overhead_cost`) VALUES
-(8, 'TRX-PRD-000000001', 17750000, 16500000, 12062500),
-(9, 'TRX-PRD-000000002', 190000, 450000, 14500),
-(10, 'TRX-PRD-000000003', 610000, 400000, 18250),
-(11, 'TRX-PRD-000000004', 9500000, 6000000, 1375000);
+(16, 'TRX-PRD-000000001', 875000, 350000, 100000);
 
 -- --------------------------------------------------------
 
@@ -623,13 +518,10 @@ CREATE TABLE `purchase` (
 --
 
 INSERT INTO `purchase` (`purchase_id`, `trans_id`, `material_id`, `purchase_qty`, `purchase_price`) VALUES
-(8, 'TRX-PMB-000000001', 'MTR-0001', 500, 15000),
-(9, 'TRX-PMB-000000001', 'MTR-0004', 500, 12500),
-(10, 'TRX-PMB-000000001', 'MTR-0005', 1000, 4000),
-(11, 'TRX-PMB-000000001', 'MTR-0008', 12000, 250),
-(12, 'TRX-PMB-000000002', 'MTR-0001', 100, 15000),
-(13, 'TRX-PMB-000000002', 'MTR-0004', 100, 12500),
-(14, 'TRX-PMB-000000002', 'MTR-0008', 1000, 500);
+(16, 'TRX-PMB-000000001', 'MTR-0001', 100, 23000),
+(17, 'TRX-PMB-000000001', 'MTR-0004', 100, 15000),
+(18, 'TRX-PMB-000000001', 'MTR-0005', 100, 5000),
+(19, 'TRX-PMB-000000001', 'MTR-0011', 100, 16000);
 
 -- --------------------------------------------------------
 
@@ -657,7 +549,7 @@ INSERT INTO `raw_materials` (`material_id`, `material_name`, `material_stock`, `
 ('MTR-0001', 'Kain Katun', 0, 'Meter', 'BBB', 0, '2020-10-22 20:24:59', NULL, NULL),
 ('MTR-0004', 'Cotton Combed 40S', 0, 'Meter', 'BBB', 0, '2020-10-22 20:30:12', NULL, '2020-10-22 20:33:49'),
 ('MTR-0005', 'Benang', 0, 'Roll', 'BBB', 0, '2020-11-19 17:03:32', NULL, NULL),
-('MTR-0008', 'Plastik Kemasan', 0, 'Pcs', 'BBP', 0, '2020-11-19 17:07:02', NULL, NULL),
+('MTR-0008', 'Plastik Kemasan', 0, 'Pcs', 'BBP', 1, '2020-11-19 17:07:02', NULL, '2021-07-27 15:40:10'),
 ('MTR-0011', 'Kain Batik', 0, 'Meter', 'BBB', 0, '2021-04-17 03:08:23', NULL, NULL);
 
 -- --------------------------------------------------------
@@ -711,26 +603,12 @@ CREATE TABLE `transactions` (
 --
 
 INSERT INTO `transactions` (`trans_id`, `periode`, `description`, `trans_date`, `customer_id`, `product_id`, `order_done`, `production_step`, `ref_production`, `trans_total`, `dp`, `status`, `status_bayar`, `status_production`, `lock_doc`, `trans_type`, `date_created`, `updated_at`) VALUES
-('TRX-BOM-000000001', 202107, 'Bom Kaos Anak', '2021-07-03 14:02:17', NULL, 'PRD-0001', NULL, NULL, NULL, 0, NULL, 1, NULL, NULL, 0, 'bom', '2021-07-01 03:59:38', '2021-07-03 14:02:17'),
-('TRX-BOM-000000002', 202107, 'Bom Kaos Anak Ukuran XXL', '2021-07-01 05:28:48', NULL, 'PRD-0001', NULL, NULL, NULL, 0, NULL, 1, NULL, NULL, 1, 'bom', '2021-07-01 04:00:45', NULL),
-('TRX-BOM-000000003', 202107, 'Bom Kaos Anak Ukuran XL', '2021-07-01 05:28:48', NULL, 'PRD-0001', NULL, NULL, NULL, 0, NULL, 1, NULL, NULL, 1, 'bom', '2021-07-01 04:01:53', NULL),
-('TRX-BOM-000000004', 202107, 'Bom Kaos Anak Ukuran L', '2021-07-01 05:28:48', NULL, 'PRD-0001', NULL, NULL, NULL, 0, NULL, 1, NULL, NULL, 1, 'bom', '2021-07-01 04:02:46', NULL),
-('TRX-BOM-000000005', 202107, 'Bom Kaos Dewasa Ukuran M', '2021-07-01 05:28:48', NULL, 'PRD-0002', NULL, NULL, NULL, 0, NULL, 1, NULL, NULL, 1, 'bom', '2021-07-01 04:04:17', NULL),
-('TRX-BOM-000000006', 202107, 'Bom Kaos Dewasa Ukuran XL', '2021-07-01 05:28:48', NULL, 'PRD-0002', NULL, NULL, NULL, 0, NULL, 1, NULL, NULL, 1, 'bom', '2021-07-01 04:07:01', NULL),
-('TRX-BOM-000000007', 202107, 'Bom Kaos Dewasa Ukuran XXL', '2021-07-01 05:28:48', NULL, 'PRD-0002', NULL, NULL, NULL, 0, NULL, 1, NULL, NULL, 1, 'bom', '2021-07-01 04:07:57', NULL),
-('TRX-BOM-000000008', 202107, 'Bom Seragam Olahraga SD Ukuran M', '2021-07-01 05:28:48', NULL, 'PRD-0003', NULL, NULL, NULL, 0, NULL, 1, NULL, NULL, 1, 'bom', '2021-07-01 04:13:19', NULL),
-('TRX-BOM-000000009', 202107, 'Bom Seragam Olahraga Ukuran L', '2021-07-02 16:20:04', NULL, 'PRD-0003', NULL, NULL, NULL, 0, NULL, 1, NULL, NULL, 0, 'bom', '2021-07-01 04:14:25', '2021-07-02 16:20:04'),
-('TRX-PMB-000000001', 202107, NULL, '2021-07-02 06:21:26', NULL, NULL, NULL, NULL, NULL, 20750000, NULL, 1, NULL, NULL, 1, 'purchasing', '2021-07-02 06:19:40', '2021-07-02 06:21:26'),
-('TRX-PMB-000000002', 202107, NULL, '2021-07-02 07:49:08', NULL, NULL, NULL, NULL, NULL, 3250000, NULL, 1, NULL, NULL, 1, 'purchasing', '2021-07-02 07:30:45', '2021-07-02 07:49:08'),
-('TRX-PRD-000000001', 202107, 'Produksi 1', '2021-07-01 17:00:00', NULL, NULL, NULL, NULL, 'TRX-PSN-000000001', 46312500, NULL, 1, NULL, NULL, 0, 'production', '2021-07-02 15:33:39', NULL),
-('TRX-PRD-000000002', 202107, 'Produksi 2', '2021-07-01 17:00:00', NULL, NULL, NULL, NULL, 'TRX-PSN-000000002', 654500, NULL, 1, NULL, NULL, 0, 'production', '2021-07-02 16:14:51', NULL),
-('TRX-PRD-000000003', 202107, 'Produksi 3', '2021-07-01 17:00:00', NULL, NULL, NULL, NULL, 'TRX-PSN-000000003', 1028250, NULL, 1, NULL, NULL, 0, 'production', '2021-07-02 16:20:03', NULL),
-('TRX-PRD-000000004', 202107, 'test', '2021-07-02 17:00:00', NULL, NULL, NULL, NULL, 'TRX-PSN-000000004', 16875000, NULL, 1, NULL, NULL, 0, 'production', '2021-07-03 14:02:17', NULL),
-('TRX-PSN-000000001', 202107, 'Pesanan 1', '2021-07-06 09:22:01', 'CUS-0003', NULL, '0000-00-00', NULL, NULL, 85000000, 45000000, 1, 0, 3, 0, 'order', '2021-07-02 15:32:05', '2021-07-06 09:22:01'),
-('TRX-PSN-000000002', 202107, 'Pesanan 2', '2021-07-06 11:59:15', 'CUS-0002', NULL, '0000-00-00', NULL, NULL, 1100000, 500000, 1, 1, 3, 0, 'order', '2021-07-02 16:13:59', '2021-07-06 11:59:15'),
-('TRX-PSN-000000003', 202107, 'Produksi 3', '2021-07-06 12:01:38', 'CUS-0002', NULL, '0000-00-00', NULL, NULL, 1200000, 250000, 1, 1, 3, 0, 'order', '2021-07-02 16:19:22', '2021-07-06 12:01:38'),
-('TRX-PYM-000000001', 202107, 'payment', '2021-07-06 12:00:50', NULL, NULL, NULL, NULL, NULL, 600000, NULL, 1, NULL, NULL, 1, 'payment', '2021-07-06 11:59:15', '2021-07-06 12:00:50'),
-('TRX-PYM-000000002', 202107, 'Pelunasan PesananTRX-PSN-000000003', '2021-07-06 12:01:38', NULL, NULL, NULL, NULL, NULL, 950000, NULL, 1, NULL, NULL, 1, 'payment', '2021-07-06 12:01:38', NULL);
+('TRX-BOM-000000001', 202107, 'Bill Of Materials untuk Produk Kaos Anak All SIze', '2021-07-27 15:56:14', NULL, 'PRD-0001', NULL, NULL, NULL, 0, NULL, 1, NULL, NULL, 0, 'bom', '2021-07-27 15:41:18', '2021-07-27 15:56:14'),
+('TRX-PMB-000000001', 202107, NULL, '2021-07-27 15:38:30', NULL, NULL, NULL, NULL, NULL, 5900000, NULL, 1, NULL, NULL, 1, 'purchasing', '2021-07-27 15:37:18', '2021-07-27 15:38:30'),
+('TRX-PMB-000000002', 202107, NULL, '2021-07-27 16:06:43', NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, NULL, NULL, 1, 'purchasing', '2021-07-27 16:06:43', NULL),
+('TRX-PRD-000000001', 202107, 'Produksi untuk pesanan Neng RIska : Kaos Anak All size', '2021-07-26 17:00:00', NULL, NULL, NULL, NULL, 'TRX-PSN-000000001', 1325000, NULL, 1, NULL, NULL, 0, 'production', '2021-07-27 16:04:48', NULL),
+('TRX-PSN-000000001', 202107, 'Pesanan Kaos Anak Neg Riska All Size', '2021-07-27 16:04:48', 'CUS-0003', NULL, '0000-00-00', NULL, NULL, 2750000, 825000, 1, NULL, 3, 0, 'order', '2021-07-27 15:42:50', '2021-07-27 16:04:48'),
+('TRX-STM-000000001', 202107, 'Modal Awal Pemilik', '2021-06-30 17:00:00', NULL, NULL, NULL, NULL, NULL, 500000000, NULL, 1, NULL, NULL, 1, 'modal', '2021-07-27 15:37:04', NULL);
 
 -- --------------------------------------------------------
 
@@ -953,25 +831,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bill_of_materials`
 --
 ALTER TABLE `bill_of_materials`
-  MODIFY `bom_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `bom_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `direct_labor_costs`
 --
 ALTER TABLE `direct_labor_costs`
-  MODIFY `direct_labor_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `direct_labor_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `direct_material_cost`
 --
 ALTER TABLE `direct_material_cost`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `general_ledger`
 --
 ALTER TABLE `general_ledger`
-  MODIFY `gl_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
+  MODIFY `gl_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=218;
 
 --
 -- AUTO_INCREMENT for table `menu_access`
@@ -983,31 +861,31 @@ ALTER TABLE `menu_access`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `order_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `overhead_cost`
 --
 ALTER TABLE `overhead_cost`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `payment_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `payment_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `production_costs`
 --
 ALTER TABLE `production_costs`
-  MODIFY `cost_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `cost_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `purchase`
 --
 ALTER TABLE `purchase`
-  MODIFY `purchase_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `purchase_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `roles`

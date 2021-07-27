@@ -11,7 +11,7 @@ class M_ledger extends CI_Model
 	}
 	public function akun()
 	{
-		return $this->db->get('chart_of_accounts')->result_array();
+		return $this->db->get_where('chart_of_accounts', ['status' => 1])->result_array();
 	}
 
 	public function get_ledger($y, $m)
