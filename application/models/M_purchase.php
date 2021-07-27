@@ -108,26 +108,30 @@ class M_purchase extends CI_Model
 	}
 	public function store($trans_id, $tb, $tp, $total)
 	{
+		$periode = date('Y') . '' . date('m');
 		$trans = [
 			'status'		=> 1,
 			'trans_total'	=> $total
 		];
 		$gl_tb = [
 			'account_no'		=> '1-10003',
-			'trans_id'		=> $trans_id,
+			'periode'			=> $periode,
+			'trans_id'			=> $trans_id,
 			'nominal'			=> $tb,
 			'gl_balance'		=> 'd'
 
 		];
 		$gl_tp = [
 			'account_no'		=> '1-10004',
-			'trans_id'		=> $trans_id,
+			'periode'			=> $periode,
+			'trans_id'			=> $trans_id,
 			'nominal'			=> $tp,
 			'gl_balance'		=> 'd'
 		];
 		$gl_cash = [
 			'account_no'		=> '1-10001',
-			'trans_id'		=> $trans_id,
+			'periode'			=> $periode,
+			'trans_id'			=> $trans_id,
 			'nominal'			=> $total,
 			'gl_balance'		=> 'k'
 		];

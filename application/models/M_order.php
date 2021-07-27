@@ -208,12 +208,14 @@ class M_order extends CI_Model
 				[
 					'account_no'		=> '1-10001',
 					'periode'			=> $periode,
+					'gl_date'			=> $tanggal,
 					'trans_id'			=> $trans_id,
 					'nominal'			=> $payment,
 					'gl_balance'		=> 'd'
 				],
 				[
 					'account_no'		=> '1-10002',
+					'gl_date'			=> $tanggal,
 					'periode'			=> $periode,
 					'trans_id'			=> $trans_id,
 					'nominal'			=> $total - $payment,
@@ -221,6 +223,7 @@ class M_order extends CI_Model
 				],
 				[
 					'account_no'		=> '4-10001',
+					'gl_date'			=> $tanggal,
 					'periode'			=> $periode,
 					'trans_id'			=> $trans_id,
 					'nominal'			=> $total,
